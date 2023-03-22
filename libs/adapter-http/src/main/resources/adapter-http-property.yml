@@ -1,0 +1,24 @@
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      failureRateThreshold: 40
+      slowCallRateThreshold: 95
+      slowCallDurationThreshold: 6s
+      slidingWindowType: COUNT_BASED
+      slidingWindowSize: 8
+      waitDurationInOpenState: 6s
+  instances:
+    BlogHttpClient:
+      registerHealthIndicator: true
+      baseConfig: default
+
+kakao-open-api:
+  auth:
+    rest-api-key: bcac5d27e857e2f0e6769f4ea47f36e5
+  base-url: https://dapi.kakao.com
+
+naver-open-api:
+  auth:
+    client-id: SSvVXVffRoqLZBgAqNL3
+    client-secret: DjR37fqO87
+  base-url: https://openapi.naver.com

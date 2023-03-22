@@ -1,0 +1,15 @@
+dependencies {
+    implementation("org.springframework.data:spring-data-commons")
+    implementation("org.springframework.boot:spring-boot-starter-json")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework:spring-web")
+    implementation("org.springframework:spring-tx")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation("jakarta.persistence:jakarta.persistence-api")
+    implementation("jakarta.annotation:jakarta.annotation-api")
+    implementation("jakarta.validation:jakarta.validation-api")
+    implementation("com.querydsl:querydsl-core")
+    annotationProcessor(group = "com.querydsl", name = "querydsl-apt", classifier = "jpa")
+    annotationProcessor("jakarta.persistence:jakarta.persistence-api")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+}

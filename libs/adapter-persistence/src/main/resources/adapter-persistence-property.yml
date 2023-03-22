@@ -1,0 +1,27 @@
+spring:
+  jpa:
+    show-sql: true
+  flyway:
+    enabled: true
+    encoding: utf-8
+    baseline-on-migrate: true
+    baseline-version: 0
+    locations: classpath:db/migration
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  datasource:
+    name: BlogDatasource
+    url: jdbc:h2:mem:blog;MODE=MYSQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    platform: h2
+
+---
+spring.config.activate.on-profile: test
+
+spring:
+  flyway:
+   enabled: true
