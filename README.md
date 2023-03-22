@@ -11,7 +11,7 @@
 - "Spock" for testing
 
 # 빌드 결과물
-[app-api-1.0-SNAPSHOT-boot.jar](https://github.com/ddongeee2/search)
+[app-api-1.0-SNAPSHOT-boot.jar](https://github.com/ddongeee2/search/raw/main/artifact/app-api-1.0-SNAPSHOT-boot.jar)
 
 # 프로젝트 구성
 ```
