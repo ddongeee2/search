@@ -2,15 +2,15 @@ import com.linecorp.support.project.multi.recipe.configureByLabels
 
 plugins {
     java
-    id("io.spring.dependency-management") version Versions.springDependencyManagementPlugin apply false
     id("org.springframework.boot") version Versions.springBoot apply false
-    id("io.freefair.lombok") version Versions.lombokPlugin apply false
+    id("io.spring.dependency-management") version Versions.springDependencyManagementPlugin apply false
     id("com.linecorp.build-recipe-plugin") version Versions.lineRecipePlugin
+    id("io.freefair.lombok") version Versions.lombokPlugin apply false
 
-    kotlin("jvm") version Versions.kotlin apply false
     kotlin("kapt") version Versions.kotlin apply false
-    kotlin("plugin.spring") version Versions.kotlin apply false
+    kotlin("jvm") version Versions.kotlin apply false
     kotlin("plugin.jpa") version Versions.kotlin apply false
+    kotlin("plugin.spring") version Versions.kotlin apply false
 }
 
 allprojects {
@@ -34,8 +34,8 @@ subprojects {
 
 configureByLabels("java") {
     apply(plugin = "org.gradle.java")
-    apply(plugin = "io.spring.dependency-management")
     apply(plugin = "io.freefair.lombok")
+    apply(plugin = "io.spring.dependency-management")
     apply(plugin = "groovy")
 
     configure<JavaPluginExtension> {
@@ -65,13 +65,6 @@ configureByLabels("java") {
             dependency("com.querydsl:querydsl-core:${Versions.querydsl}")
             dependency("com.querydsl:querydsl-jpa:${Versions.querydsl}")
             dependency("com.querydsl:querydsl-apt:${Versions.querydsl}")
-
-            // todo : junit 제거
-//            dependency("org.junit.jupiter:junit-jupiter-api:${Versions.junit}")
-//            dependency("org.junit.jupiter:junit-jupiter-params:${Versions.junit}")
-//            dependency("org.junit.jupiter:junit-jupiter-engine:${Versions.junit}")
-//            dependency("org.assertj:assertj-core:${Versions.assertjCore}")
-//            dependency("org.mockito:mockito-junit-jupiter:${Versions.mockitoCore}")
         }
     }
 
@@ -95,19 +88,6 @@ configureByLabels("java") {
         testImplementation("org.springframework.boot:spring-boot-starter-test")
         testImplementation("org.spockframework:spock-core:${Versions.spock}")
         testImplementation("org.spockframework:spock-spring:${Versions.spock}")
-
-        // todo : 제거
-//        testImplementation("org.junit.jupiter:junit-jupiter-api")
-//        testImplementation("org.assertj:assertj-core")
-//        testImplementation("org.junit.jupiter:junit-jupiter-params")
-//        testImplementation("org.mockito:mockito-core")
-//        testImplementation("org.mockito:mockito-junit-jupiter")
-//        testImplementation("com.navercorp.fixturemonkey:fixture-monkey-starter")
-//        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-//        integrationImplementation("org.junit.jupiter:junit-jupiter-api")
-//        integrationImplementation("org.junit.jupiter:junit-jupiter-params")
-//        integrationImplementation("org.assertj:assertj-core")
-//        integrationRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     }
 }
 

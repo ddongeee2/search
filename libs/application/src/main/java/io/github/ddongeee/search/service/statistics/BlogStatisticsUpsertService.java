@@ -1,5 +1,6 @@
 package io.github.ddongeee.search.service.statistics;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionOperations;
 import io.github.ddongeee.search.domain.statistics.BlogStatistic;
@@ -9,16 +10,10 @@ import io.github.ddongeee.search.port.input.statistics.UpsertBlogStatisticsUseCa
 import io.github.ddongeee.search.port.output.statistics.BlogStatisticsPort;
 
 @Service
+@RequiredArgsConstructor
 public class BlogStatisticsUpsertService implements UpsertBlogStatisticsUseCase {
-
     private final BlogStatisticsPort blogStatisticsPort;
     private final TransactionOperations writeTransactionOperations;
-
-    public BlogStatisticsUpsertService(BlogStatisticsPort blogStatisticsPort,
-                                       TransactionOperations writeTransactionOperations) {
-        this.blogStatisticsPort = blogStatisticsPort;
-        this.writeTransactionOperations = writeTransactionOperations;
-    }
 
     @Override
     public void increaseCountOrCreate(UpsertBlogStatisticsCommand command) {

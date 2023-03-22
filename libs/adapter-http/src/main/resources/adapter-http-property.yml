@@ -1,12 +1,12 @@
 resilience4j.circuitbreaker:
   configs:
     default:
-      failureRateThreshold: 50 # 실패한 호출에 대해 서킷이 열리게 되는 임계값 (백분율)
-      slowCallRateThreshold: 100 # 느린 호출에 대해 서킷이 열리게 되는 임계값 (백분율)
-      slowCallDurationThreshold: 5s # 느린 호출로 판단하기 위한 기준시간
-      slidingWindowType: COUNT_BASED # 서킷이 `CLOSED` 상태에서 호출결과를 기록할때 사용하는 슬라이딩 윈도우 타입. 카운트 또는 시간기반으로 동작한다.
-      slidingWindowSize: 10 # 카운트기반으로 동작할때는 카운트 수, 시간기반으로 동작할때는 초
-      waitDurationInOpenState: 5s # 서킷이 `OPEN` 상태에서 `HALF_OPEN` 상태로 전환하기까지 시간
+      failureRateThreshold: 40
+      slowCallRateThreshold: 95
+      slowCallDurationThreshold: 6s
+      slidingWindowType: COUNT_BASED
+      slidingWindowSize: 8
+      waitDurationInOpenState: 6s
   instances:
     BlogHttpClient:
       registerHealthIndicator: true

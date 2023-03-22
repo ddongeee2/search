@@ -1,14 +1,14 @@
 INSERT INTO blog_statistic (id, keyword, count, created_at, created_by, modified_at, modified_by)
-values (10, '자바', 4232, '2023-02-07 05:23:32.627696', 'SYSTEM', '2023-2-07 05:30:34.767035', 'SYSTEM');
+values (1, '트와이스', 111, '2023-03-21 23:59:59.123456', 'SYSTEM', '2023-03-21 23:59:59.123456', 'SYSTEM');
 
 INSERT INTO blog_statistic (id, keyword, count, created_at, created_by, modified_at, modified_by)
-values (11, '스프링', 3939, '2023-02-07 05:23:32.627696', 'SYSTEM', '2023-2-07 05:30:34.767035', 'SYSTEM');
+values (2, '뉴진스', 123, '2023-03-21 23:59:59.123456', 'SYSTEM', '2023-03-21 23:59:59.123456', 'SYSTEM');
 
 INSERT INTO blog_statistic (id, keyword, count, created_at, created_by, modified_at, modified_by)
-values (12, '코틀린', 40104, '2023-02-07 05:23:32.627696', 'SYSTEM', '2023-2-07 05:30:34.767035', 'SYSTEM');
+values (3, 'BTS', 3123, '2023-03-21 23:59:59.123456', 'SYSTEM', '2023-03-21 23:59:59.123456', 'SYSTEM');
 
 INSERT INTO blog_statistic (id, keyword, count, created_at, created_by, modified_at, modified_by)
-values (13, 'JPA', 5783, '2023-02-07 05:23:32.627696', 'SYSTEM', '2023-2-07 05:30:34.767035', 'SYSTEM');
+values (4, '블랙핑크', 777, '2023-03-21 23:59:59.123456', 'SYSTEM', '2023-03-21 23:59:59.123456', 'SYSTEM');
 
 INSERT INTO blog_statistic (id, keyword, count, created_at, created_by, modified_at, modified_by)
-values (14, '테스트환경', 49237, '2023-02-07 05:23:32.627696', 'SYSTEM', '2023-2-07 05:30:34.767035', 'SYSTEM');
+values (5, 'GOD', 9977, '2023-03-21 23:59:59.123456', 'SYSTEM', '2023-03-21 23:59:59.123456', 'SYSTEM');
