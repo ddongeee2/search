@@ -35,7 +35,7 @@ public class BlogStatisticsSearchController {
         }
     }
 
-    @GetMapping("/api/v1/blogs/statistics/top-keyword")
+    @GetMapping("/api/v1/statistics/search-blog/top-keyword")
     public ResultResponse<List<BlogStatisticsDto>> searchTopSearchKeyword(
             @Valid final SearchBlogStatisticsRequestBody requestBody
     ) {
