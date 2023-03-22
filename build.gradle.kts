@@ -5,9 +5,6 @@ plugins {
     id("io.spring.dependency-management") version Versions.springDependencyManagementPlugin apply false
     id("org.springframework.boot") version Versions.springBoot apply false
     id("io.freefair.lombok") version Versions.lombokPlugin apply false
-    id("com.coditory.integration-test") version Versions.integrationTestPlugin apply false
-    id("com.epages.restdocs-api-spec") version Versions.restdocsApiSpec apply false
-    id("org.asciidoctor.jvm.convert") version Versions.asciidoctorPlugin apply false
     id("com.linecorp.build-recipe-plugin") version Versions.lineRecipePlugin
 
     kotlin("jvm") version Versions.kotlin apply false
@@ -39,7 +36,7 @@ configureByLabels("java") {
     apply(plugin = "org.gradle.java")
     apply(plugin = "io.spring.dependency-management")
     apply(plugin = "io.freefair.lombok")
-    apply(plugin = "com.coditory.integration-test")
+    apply(plugin = "groovy")
 
     configure<JavaPluginExtension> {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -62,7 +59,6 @@ configureByLabels("java") {
         dependencies {
             dependency("org.apache.commons:commons-lang3:${Versions.apacheCommonsLang}")
             dependency("org.apache.commons:commons-collections4:${Versions.apacheCommonsCollections}")
-            dependency("com.navercorp.fixturemonkey:fixture-monkey-starter:${Versions.fixtureMonkey}")
             dependency("org.mapstruct:mapstruct:${Versions.mapstruct}")
             dependency("org.mapstruct:mapstruct-processor:${Versions.mapstruct}")
             dependency("com.fasterxml.jackson.core:jackson-databind:${Versions.jacksonCore}")
@@ -70,15 +66,12 @@ configureByLabels("java") {
             dependency("com.querydsl:querydsl-jpa:${Versions.querydsl}")
             dependency("com.querydsl:querydsl-apt:${Versions.querydsl}")
 
-            dependency("org.junit.jupiter:junit-jupiter-api:${Versions.junit}")
-            dependency("org.junit.jupiter:junit-jupiter-params:${Versions.junit}")
-            dependency("org.junit.jupiter:junit-jupiter-engine:${Versions.junit}")
-            dependency("org.assertj:assertj-core:${Versions.assertjCore}")
-            dependency("org.mockito:mockito-junit-jupiter:${Versions.mockitoCore}")
-
-            dependency("com.epages:restdocs-api-spec:${Versions.restdocsApiSpec}")
-            dependency("com.epages:restdocs-api-spec-mockmvc:${Versions.restdocsApiSpec}")
-            dependency("com.epages:restdocs-api-spec-restassured:${Versions.restdocsApiSpec}")
+            // todo : junit 제거
+//            dependency("org.junit.jupiter:junit-jupiter-api:${Versions.junit}")
+//            dependency("org.junit.jupiter:junit-jupiter-params:${Versions.junit}")
+//            dependency("org.junit.jupiter:junit-jupiter-engine:${Versions.junit}")
+//            dependency("org.assertj:assertj-core:${Versions.assertjCore}")
+//            dependency("org.mockito:mockito-junit-jupiter:${Versions.mockitoCore}")
         }
     }
 
@@ -87,10 +80,6 @@ configureByLabels("java") {
         val annotationProcessor by configurations
 
         val testImplementation by configurations
-        val testRuntimeOnly by configurations
-
-        val integrationImplementation by configurations
-        val integrationRuntimeOnly by configurations
 
         implementation("com.google.guava:guava")
 
@@ -103,18 +92,22 @@ configureByLabels("java") {
 
         annotationProcessor("org.mapstruct:mapstruct-processor")
 
-        testImplementation("org.junit.jupiter:junit-jupiter-api")
-        testImplementation("org.assertj:assertj-core")
-        testImplementation("org.junit.jupiter:junit-jupiter-params")
-        testImplementation("org.mockito:mockito-core")
-        testImplementation("org.mockito:mockito-junit-jupiter")
-        testImplementation("com.navercorp.fixturemonkey:fixture-monkey-starter")
-        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+        testImplementation("org.springframework.boot:spring-boot-starter-test")
+        testImplementation("org.spockframework:spock-core:${Versions.spock}")
+        testImplementation("org.spockframework:spock-spring:${Versions.spock}")
 
-        integrationImplementation("org.junit.jupiter:junit-jupiter-api")
-        integrationImplementation("org.junit.jupiter:junit-jupiter-params")
-        integrationImplementation("org.assertj:assertj-core")
-        integrationRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+        // todo : 제거
+//        testImplementation("org.junit.jupiter:junit-jupiter-api")
+//        testImplementation("org.assertj:assertj-core")
+//        testImplementation("org.junit.jupiter:junit-jupiter-params")
+//        testImplementation("org.mockito:mockito-core")
+//        testImplementation("org.mockito:mockito-junit-jupiter")
+//        testImplementation("com.navercorp.fixturemonkey:fixture-monkey-starter")
+//        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+//        integrationImplementation("org.junit.jupiter:junit-jupiter-api")
+//        integrationImplementation("org.junit.jupiter:junit-jupiter-params")
+//        integrationImplementation("org.assertj:assertj-core")
+//        integrationRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     }
 }
 
@@ -137,22 +130,4 @@ configureByLabels("library") {
     tasks.getByName<Jar>("jar") {
         enabled = true
     }
-}
-
-configureByLabels("asciidoctor") {
-    apply(plugin = "org.asciidoctor.jvm.convert")
-
-    tasks.named<org.asciidoctor.gradle.jvm.AsciidoctorTask>("asciidoctor") {
-        sourceDir(file("src/docs"))
-        outputs.dir(file("build/docs"))
-        attributes(
-            mapOf(
-                "snippets" to file("build/generated-snippets")
-            )
-        )
-    }
-}
-
-configureByLabels("restdocs") {
-    apply(plugin = "com.epages.restdocs-api-spec")
 }

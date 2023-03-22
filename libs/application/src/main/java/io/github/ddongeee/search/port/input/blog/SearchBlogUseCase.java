@@ -6,7 +6,7 @@ import io.github.ddongeee.search.port.input.blog.response.BlogDto;
 import lombok.Builder;
 
 public interface SearchBlogUseCase {
-    BlogDto search(final SearchCommand command);
+    BlogDto search(SearchCommand command);
 
     record SearchCommand(
             String keyword,

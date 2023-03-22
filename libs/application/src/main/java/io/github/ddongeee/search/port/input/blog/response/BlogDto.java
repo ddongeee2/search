@@ -7,7 +7,6 @@ import io.github.ddongeee.search.port.input.Pagination;
 
 import java.util.List;
 
-@Getter
 public record BlogDto(
         List<BlogDocumentDto> documents,
         Pagination pagination

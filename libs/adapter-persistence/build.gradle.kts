@@ -14,7 +14,4 @@ dependencies {
     implementation("com.querydsl:querydsl-core")
 
     runtimeOnly("com.h2database:h2")
-
-    integrationImplementation("org.springframework.boot:spring-boot-starter-test")
-    integrationRuntimeOnly("com.h2database:h2")
 }

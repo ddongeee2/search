@@ -1,6 +1,0 @@
-spring:
-  profiles:
-    active: test
-  config:
-    import:
-      - 'classpath:adapter-http-property.yml'
